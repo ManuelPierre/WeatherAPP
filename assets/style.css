@@ -1,0 +1,54 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.header {
+    color: white;
+    background-color: darkblue;
+    text-align: center;
+    padding: 2rem;
+}
+
+.fas,
+.far {
+    padding-right: 1.5rem;
+    vertical-align: middle;
+}
+
+.search,
+.records-number,
+.start-year,
+.end-year {
+    margin-top: 1rem;
+}
+
+.container2 {
+
+    float: left;
+}
+
+
+.container {
+    flex-wrap: wrap;
+}
+
+.weathertile {
+    margin: 20px;
+    background-color: lightblue;
+}
+
+/* .results {
+
+
+    color: green;
+    align-content: center;
+    font-size: 57;
+} */
+
+
+/* .mx-auto {
+
+    align-content: center;
+} */
