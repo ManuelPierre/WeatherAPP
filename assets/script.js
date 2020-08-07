@@ -61,6 +61,13 @@ $(".searchBtn").on("click", function (event) {
       var cityName = response.city.name;
       console.log(`<p>${cityName} </p>`)
 
+      // var cityDat = response.list[0].dt_txt;
+      // console.log(`<p>${cityDat}</p>`)
+
+      // this is the icon path:  list[0].weather[0].icon
+      // var img = $("<img>").attr("src", "http://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png");
+      // console.log(img)
+
       var cityTempe = response.list[0].main.temp;
       console.log(`<p>${cityTempe} </p>`)
 
@@ -103,6 +110,10 @@ $(".searchBtn").on("click", function (event) {
       var cityTitle = $("#city-title").get(0);
       cityTitle.innerHTML = cityName;
 
+      // var cityDate = $("#city-date").get(0);
+      // cityDate.innerHTML = ("(" + cityDat + ")");
+
+
       var cityTemp = $("#city-temp").get(0);
       cityTemp.innerHTML = ("Temperature: " + cityTempe);
 
@@ -117,22 +128,77 @@ $(".searchBtn").on("click", function (event) {
 
 
 
-
-      // var ptag = $("<p>")
-      // ptag.text(response.city[i].abstract)
-      // ptag.text(response.response.city[i].abstract)
-      // console.log(response.docs[i].abstract)
-      // console.log(response.response.docs[i].abstract)
-
-      // var ptag2 = $("<p>")
-      // ptag2.text(response.docs[i].pub_date)
-      // ptag2.text(response.response.docs[i].pub_date)
-
-      // $("#results").append(ptag)
-      // $("#results").append(ptag2)
-      // $("#results").append(ptag).append(ptag2)
+      var lat = response.city.coord.lat
+      var lon = response.city.coord.lon
+      var ApiKey = "09dc7618764f3173b089191eb7e172a1"
 
 
-      // }
+      var oneCallApi = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&
+      units=imperial&appid=${ApiKey}`
+
+      $.ajax({
+          url: oneCallApi,
+          method: "GET"
+        })
+
+        .then(function (data) {
+
+
+          console.log(data)
+
+
+
+
+          var cityUvie = data.current.uvi
+          $("#UV-index").text(cityUvie)
+          // create a condition to see if UV is severe moderate or high
+          if (cityUvie < 3) {
+            $("#UV-index").css('background-color', 'green')
+          } else if (cityUvie > 7) {
+            $("#UV-index").css('background-color', 'red')
+          } else {
+            $("#UV-index").css('background-color', 'yellow')
+          }
+
+          for (let index = 1; index <= 5; index++) {
+            console.log(data.daily[index])
+            var temp = data.daily[index].temp.day
+
+            var div = $("<div>")
+            div.addClass("card-body")
+            var p = $("<p>")
+
+            p.text(temp).addClass("card-title")
+            div.append(p)
+            $(".forecast").append(div)
+            //   $().text(temp)
+            //   $("#Day3").text(temp)
+            //   $("#Day4").text(temp)
+            // }
+            // $("#Day5").text(temp)
+          }
+
+
+
+
+
+          // var ptag = $("<p>")
+          // ptag.text(response.city[i].abstract)
+          // ptag.text(response.response.city[i].abstract)
+          // console.log(response.docs[i].abstract)
+          // console.log(response.response.docs[i].abstract)
+
+          // var ptag2 = $("<p>")
+          // ptag2.text(response.docs[i].pub_date)
+          // ptag2.text(response.response.docs[i].pub_date)
+
+          // $("#results").append(ptag)
+          // $("#results").append(ptag2)
+          // $("#results").append(ptag).append(ptag2)
+
+
+          // }
+        });
     });
+
 });
