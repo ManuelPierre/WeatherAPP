@@ -1,188 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swameta charset=" UTF-8>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
-    <!-- I had two versions of BSTR so I chose the newer version and muted out the older version -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
-    <!-- <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"crossorigin="anonymous"/>  -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swameta charset=" UTF-8>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> 
 
-    <title>Weather Dashboard</title>
-</head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+            integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+            <link rel="stylesheet" href="assets/style.css">
 
-<body>
-    <div class="container">
+            <title>Weather Dashboard</title>
+        </head>
 
-        <header class="header">
-            <h1><i class="fas fa-newspaper"></i> Weather Dashboard</h1>
-        </header>
 
-        <div class="row">
-            <div class="col-4">
-                <div class="search">Search Term: </div>
-                <input class="form-control" id="search"></input>
-                <!-- </div>  -->
-                <!-- <div class= "row"> -->
-                <button class="searchBtn"><i class="fas fa-search"></i>Search</button>
-                <!-- </div> -->
-                <!-- <div class= "row"> -->
-                <div class="container results-container" id="results">Saved Results</div>
-            </div>
-            <!-- </div> -->
-            <!-- 
-    <div class="container"> -->
-            <div class="row">
-                <div class="col-12">
-                    <!-- I am doing this to see if h1 tag will make title bigger -->
-                    <!-- <div class="results">Results<p id="city-title"></p> -->
-                    <div class="results">
+
+        <body>  
+
+            <header class="header">
+                <h1><i class="fas fa-newspaper"></i> Weather Dashboard</h1>
+            </header>
+
+            <div class="container"> 
+                <div class="row">
+                    <div class="col">
+                        <div class="search">Search Term: </div>
+                        <input class="form-control" id="search"></input>
+                        <button class="searchBtn" input id="add-city">
+                            <i class="fas fa-search"></i>Search
+                        </button>
+
+                        <div id="results"></div>
+                        <div class="results" id= "cityresults"></div>
+
+                    </div>  
+
+
+                    <div class="col">                              
                         <h1 id="city-title"></h1>
-                        <h2 id="city-date"></h2>
-                        <!-- <p id="city-date"></p> -->
-
+                        <h2 id="city-date"></h2>      
                         <div class="city-temp">
                             <p id="city-temp"></p>
-                            <div class="city-humidity">
-                                <p id="city-humidity"></p>
-                                <div class="wind-speed">
-                                    <p id="wind-speed"></p>
-                                    <div class="UV-index">
-                                        <p id="UV-index"></p>
-
-                                        <!-- <div class="row">
-                                            <div class="col-4"> -->
-
-                                        <!-- <div class="row">
-                                            <div class="col-4">
-                                                <div class="card forecast">
-                                                    <!--Start a div-->
-                                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                    <!--add source and class-->
-                                                                                                        </div> -->
+                        </div>
+                        <div class="city-humidity">
+                            <p id="city-humidity"></p>
+                        </div>
+                        <div class="wind-speed">
+                            <p id="wind-speed"></p>
+                        </div>
+                        <div class="UV-index">
+                            <p id="UV-index"></p>
+                        </div>
+                    </div>
+                </div>      
+            </div>
 
 
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="card">
-                                                                <!--Start a div-->
-                                                                <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                                <!--add source and class-->
-                                                                <div class="card-body">
-                                                                    <!-- Keep class names relative to what you are doing-->
-                                                                    <h5 class="card-title" id="Day-2"></h5>
-                                                                    <p class="card-text Day 1">
-                                                                    </p>
-                                                                </div>
 
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="card">
-                                                                            <!--Start a div-->
-                                                                            <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                                            <!--add source and class-->
-                                                                            <div class="card-body">
-                                                                                <!-- Keep class names relative to what you are doing-->
-                                                                                <h5 class="card-title" id="Day-3"></h5>
-                                                                                <p class="card-text Day 1">
-                                                                                </p>
-                                                                                </p>
-                                                                            </div>
-
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <div class="card">
-                                                                                        <!--Start a div-->
-                                                                                        <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                                                        <!--add source and class-->
-                                                                                        <div class="card-body">
-                                                                                            <!-- Keep class names relative to what you are doing-->
-                                                                                            <h5 class="card-title"
-                                                                                                id="Day-4">
-                                                                                            </h5>
-                                                                                            <p class="card-text Day 1">
-                                                                                            </p>
-                                                                                        </div>
-
-
-                                                                                        <div class="row">
-                                                                                            <div class="col-12">
-                                                                                                <div class="card">
-                                                                                                    <!--Start a div-->
-                                                                                                    <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                                                                    <!--add source and class-->
-                                                                                                    <div
-                                                                                                        class="card-body">
-                                                                                                        <!-- Keep class names relative to what you are doing-->
-                                                                                                        <h5 class="card-title"
-                                                                                                            id="Day-5">
-                                                                                                        </h5>
-                                                                                                        <p
-                                                                                                            class="card-text Day 1">
-                                                                                                        </p>
-                                                                                                    </div>
-
-                                                                                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                                                                                    <!-- Add link
-   with href and put text for button in-->
-                                                                                                    <!-- </div>
-                                                        </div>
-                                                        <div class="weathertile">
-                                                            <p id="Day1"></p>
-                                                            <div class="weathertile">
-                                                                <p id="Day2"></p>
-
-                                                                <div class="weathertile">
-                                                                    <p id="weathertile"></p>
-                                                                    <div class="weathertile">
-                                                                        <p id="weathertile"></p>
-                                                                        <div class="weathertile">
-                                                                            <p id="weathertile"></p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div> -->
-                                                                                                    <!-- </div> -->
-<!-- 
-                                                                                                    <div class= container>
-
-                                                                                                    <div class="row">
-                                                                                                        <div class="col-4">
-                                                                                                            <div class="card forecast">
-                                                                                                                <!--Start a div-->
-                                                                                                                <!-- <img src="..." class="card-img-top" alt="..."> -->
-                                                                                                                <!--add source and class-->
-                                                                                                            </div>
-                                                                                                                                                                    </div> -->
+            <div class=container2>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card forecast"></div>
+                    </div>
+                </div>
+            </div>
 
 
 
 
 
 
-                                                                                                    <script
-                                                                                                        src="https://code.jquery.com/jquery-3.4.1.min.js">
-                                                                                                    </script>
-                                                                                                    <script
-                                                                                                        src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
-                                                                                                        // 
-                                                                                                    </script>
-                                                                                                    <script
-                                                                                                        src="assets/script.js">
-                                                                                                    </script>
 
-                                                                                                    <script
-                                                                                                        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-                                                                                                    </script>
-                                                                                                    <script
-                                                                                                        type="text/javascript"
-                                                                                                        src="assets/script.js">
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js">
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js">
+            </script>
+            <script src="assets/script.js">
+            </script>                                                                                    
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+            </script>
+           
+
+        </body>
+</html>
